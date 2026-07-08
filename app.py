@@ -48,6 +48,5 @@ st.write(f"Selected level: {level}")
 # Text input with string processing
 name = st.text_input("Enter your name", "Type here...")
 
-            st.write(f"Your name reversed: {name[::-1]}")
-            st.write(f"Starts with 'A': {name.upper().startswith('A')}")
+
 
