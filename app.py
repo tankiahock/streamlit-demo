@@ -63,6 +63,5 @@ st.write(f"Selected level: {level}")
 name = st.text_input("Enter your name", "Type here...")
 if st.button("Submit"):
    st.success(f"Hello, {name.title()}!")
-            st.write(f"Your name reversed: {name[::-1]}")
-            st.write(f"Starts with 'A': {name.upper().startswith('A')}")
+
 
