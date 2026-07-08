@@ -50,34 +50,6 @@ st.write("Your main hobby is:", hobby)
 # Multiselect - lets the user pick more than one hobby
 selected = st.multiselect("Pick all your hobbies:", hobbies)
 
-# Dictionary mapping each hobby to a fun fact
-hobby_facts = {
-    "Dancing": "Dancing burns about 300 calories per hour.",
-    "Reading": "The average person reads 12 books a year.",
-    "Sports": "Regular exercise improves memory by 20%.",
-    "Gaming": "The global gaming industry is worth $180 billion.",
-    "Cooking": "The world's oldest recipe is over 4,000 years old.",
-}
-# Loop through the selected hobbies and display each one
-if selected:
-    st.write(f"You selected {len(selected)} hobbies:")
-    for h in selected:
-        st.write(f"  - {h}")
-else:
-    st.info("No hobbies selected yet.")
-   
-# Get the list of hobbies from the dictionary keys
-hobbies = list(hobby_facts.keys())
-
-# Selectbox using the dictionary keys as options
-hobby = st.selectbox("Select a Hobby:", hobbies)
-
-# Look up the fun fact from the dictionary
-if hobby in hobby_facts:
-    st.info(hobby_facts[hobby])
-else:
-    st.warning("No fun fact available for this hobby yet.")
-
 # Slider
 level = st.slider("Choose a level", 1, 5)
 st.write(f"Selected level: {level}")
@@ -85,22 +57,4 @@ st.write(f"Selected level: {level}")
 # Text input with Python
 # Text input with string processing
 name = st.text_input("Enter your name", "Type here...")
-
-if st.button("Submit"):
-    # Check if the user has typed a real name
-    if name == "Type here..." or name == "":
-        st.warning("Please enter your name first.")
-    else:
-        # Validate: check if name contains only letters and spaces
-        name_letters = name.replace(" ", "")
-        if not name_letters.isalpha():
-            st.error("Name should contain letters only!")
-        else:
-            # Display string method results
-            st.success(f"Hello, {name.title()}!")
-            st.write(f"Uppercase: {name.upper()}")
-            st.write(f"Lowercase: {name.lower()}")
-            st.write(f"Number of characters: {len(name)}")
-            st.write(f"Your name reversed: {name[::-1]}")
-            st.write(f"Starts with 'A': {name.upper().startswith('A')}")
 
