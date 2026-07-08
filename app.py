@@ -31,7 +31,7 @@ gender = st.radio("Select Gender:", ['Male', 'Female','Prefer not to say'])
 st.success(f"Selected: {gender}")
 if gender == "Male":
     st.write("You have chosen Male")
-elseif gender == "Female":
+elif gender == "Female":
     st.write("You have chosen Female")
 else:
     st.write("Your concerns are valid")
