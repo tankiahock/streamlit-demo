@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 
 # App title
-st.title("Simple Streamlit Demo")
+st.title("Simple Streamlit Demo For CUC")
 
 # Header and subheader
 st.header("Welcome to My App")
@@ -27,12 +27,14 @@ if st.checkbox("Show message"):
    st.write("Checkbox is checked!")
    
 # Radio button
-gender = st.radio("Select Gender:", ['Male', 'Female'])
+gender = st.radio("Select Gender:", ['Male', 'Female','Prefer not to say'])
 st.success(f"Selected: {gender}")
 if gender == "Male":
     st.write("You have chosen Male")
-else:
+elseif gender == "Female":
     st.write("You have chosen Female")
+else:
+    st.write("Your concerns are valid")
 
 # Selectbox
 hobby = st.selectbox("Select a Hobby:", ['Dancing', 'Reading', 'Sports'])
