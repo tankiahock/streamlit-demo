@@ -1,6 +1,23 @@
 import streamlit as st
 from PIL import Image
 
+def generate_greeting(name, gender):
+    """Return a personalised greeting based on name and gender."""
+    title = "Mr." if gender == "Male" else "Ms."
+    greeting = f"Welcome {title} {name.title()}!"
+    return greeting
+
+def get_level_description(level):
+    """Return a word description for the numeric level."""
+    descriptions = {
+        1: "Beginner",
+        2: "Elementary",
+        3: "Intermediate",
+        4: "Advanced",
+        5: "Expert"
+    }
+    return descriptions[level]
+
 # App title
 st.title("Simple Streamlit Demo For CUC")
 
@@ -27,14 +44,10 @@ if st.checkbox("Show message"):
    st.write("Checkbox is checked!")
    
 # Radio button
-gender = st.radio("Select Gender:", ['Male', 'Female','Prefer not to say'])
-st.success(f"Selected: {gender}")
-if gender == "Male":
-    st.write("You have chosen Male")
-elif gender == "Female":
-    st.write("You have chosen Female")
-else:
-    st.write("Your concerns are valid")
+gender = st.radio("Select Gender:", ['Male', 'Female'])
+
+# Use the generate_greeting function instead of if/else
+# (We need the name variable too, so this will work with the text input below)
 
 # Selectbox (version 1)
 # hobby = st.selectbox("Select a Hobby:", ['Dancing', 'Reading', 'Sports'])
@@ -80,27 +93,12 @@ else:
 
 # Slider
 level = st.slider("Choose a level", 1, 5)
-st.write(f"Selected level: {level}")
+st.write(f"Your level: {get_level_description(level)}")
 
-# Text input with Python
-# Text input with string processing
+# Text input
 name = st.text_input("Enter your name", "Type here...")
-
 if st.button("Submit"):
-    # Check if the user has typed a real name
-    if name == "Type here..." or name == "":
-        st.warning("Please enter your name first.")
-    else:
-        # Validate: check if name contains only letters and spaces
-        name_letters = name.replace(" ", "")
-        if not name_letters.isalpha():
-            st.error("Name should contain letters only!")
-        else:
-            # Display string method results
-            st.success(f"Hello, {name.title()}!")
-            st.write(f"Uppercase: {name.upper()}")
-            st.write(f"Lowercase: {name.lower()}")
-            st.write(f"Number of characters: {len(name)}")
-            st.write(f"Your name reversed: {name[::-1]}")
-            st.write(f"Starts with 'A': {name.upper().startswith('A')}")
+    # Call the function with name and gender as arguments
+    st.success(generate_greeting(name, gender))
+
 
