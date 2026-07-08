@@ -4,7 +4,7 @@ from PIL import Image
 def generate_greeting(name, gender):
     """Return a personalised greeting based on name and gender."""
     title = "Mr." if gender == "Male" else "Ms."
-    greeting = f"Welcome {title} {name.title()}!"
+    greeting = f"Welcome {title} {name.title().upper}!"
     return greeting
 
 def get_level_description(level):
