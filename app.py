@@ -27,14 +27,12 @@ if st.checkbox("Show message"):
    st.write("Checkbox is checked!")
    
 # Radio button
-gender = st.radio("Select Gender:", ['Male', 'Female','Prefer not to say'])
+gender = st.radio("Select Gender:", ['Male', 'Female'])
 st.success(f"Selected: {gender}")
 if gender == "Male":
     st.write("You have chosen Male")
-elif gender == "Female":
+else gender == "Female":
     st.write("You have chosen Female")
-else:
-    st.write("Your concerns are valid")
 
 # Selectbox (version 1)
 hobby = st.selectbox("Select a Hobby:", ['Dancing', 'Reading', 'Sports'])
@@ -47,6 +45,7 @@ st.write(f"Selected level: {level}")
 # Text input with Python
 # Text input with string processing
 name = st.text_input("Enter your name", "Type here...")
-
+if st.button("Submit"):
+   st.success(f"Hello, {name.title()}!")
 
 
