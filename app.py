@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 
 # App title
-st.title("Simple Streamlit Demo For CUC")
+st.title("Simple Streamlit Demo")
 
 # Header and subheader
 st.header("Welcome to My App")
@@ -27,28 +27,12 @@ if st.checkbox("Show message"):
    st.write("Checkbox is checked!")
    
 # Radio button
-gender = st.radio("Select Gender:", ['Male', 'Female','Prefer not to say'])
+gender = st.radio("Select Gender:", ['Male', 'Female'])
 st.success(f"Selected: {gender}")
 if gender == "Male":
     st.write("You have chosen Male")
-elif gender == "Female":
-    st.write("You have chosen Female")
 else:
-    st.write("Your concerns are valid")
-
-# Selectbox (version 1)
-# hobby = st.selectbox("Select a Hobby:", ['Dancing', 'Reading', 'Sports'])
-# st.write("Your hobby is:", hobby)
-
-# Selectbox - using a list variable instead of hardcoded values
-hobbies = ["Dancing", "Reading", "Sports", "Gaming",
-           "Cooking", "Music", "Photography", "Gardening"]
-
-hobby = st.selectbox("Select your main hobby:", hobbies)
-st.write("Your main hobby is:", hobby)
-
-# Multiselect - lets the user pick more than one hobby
-selected = st.multiselect("Pick all your hobbies:", hobbies)
+    st.write("You have chosen Female")
 
 # Dictionary mapping each hobby to a fun fact
 hobby_facts = {
@@ -58,14 +42,7 @@ hobby_facts = {
     "Gaming": "The global gaming industry is worth $180 billion.",
     "Cooking": "The world's oldest recipe is over 4,000 years old.",
 }
-# Loop through the selected hobbies and display each one
-if selected:
-    st.write(f"You selected {len(selected)} hobbies:")
-    for h in selected:
-        st.write(f"  - {h}")
-else:
-    st.info("No hobbies selected yet.")
-   
+
 # Get the list of hobbies from the dictionary keys
 hobbies = list(hobby_facts.keys())
 
@@ -82,25 +59,10 @@ else:
 level = st.slider("Choose a level", 1, 5)
 st.write(f"Selected level: {level}")
 
-# Text input with Python
-# Text input with string processing
+# Text input
 name = st.text_input("Enter your name", "Type here...")
-
 if st.button("Submit"):
-    # Check if the user has typed a real name
-    if name == "Type here..." or name == "":
-        st.warning("Please enter your name first.")
-    else:
-        # Validate: check if name contains only letters and spaces
-        name_letters = name.replace(" ", "")
-        if not name_letters.isalpha():
-            st.error("Name should contain letters only!")
-        else:
-            # Display string method results
-            st.success(f"Hello, {name.title()}!")
-            st.write(f"Uppercase: {name.upper()}")
-            st.write(f"Lowercase: {name.lower()}")
-            st.write(f"Number of characters: {len(name)}")
+   st.success(f"Hello, {name.title()}!")
             st.write(f"Your name reversed: {name[::-1]}")
             st.write(f"Starts with 'A': {name.upper().startswith('A')}")
 
